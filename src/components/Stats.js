@@ -1,4 +1,5 @@
 export default function Stats({ items }) {
+  // No Items
   if (!items.length)
     return (
       <footer>
@@ -11,6 +12,7 @@ export default function Stats({ items }) {
   const packedPercentage =
     totalItems === 0 ? 0 : Math.round((packedItems / totalItems) * 100);
 
+  // Stats
   return (
     <footer>
       <em>

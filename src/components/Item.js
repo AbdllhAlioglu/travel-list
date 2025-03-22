@@ -9,24 +9,29 @@ export default function Item({
   const [isEditing, setIsEditing] = useState(false);
   const [newDescription, setNewDescription] = useState(itemObj.description);
 
+  // Remove Item
   const handleRemove = () => {
     onRemoveItem(itemObj.id);
   };
 
+  // Toggle Packed
   const handleCheckboxChange = () => {
     onTogglePacked(itemObj.id);
   };
 
+  // Edit Item
   const handleEditChange = (e) => {
     setNewDescription(e.target.value);
   };
 
+  // Edit Submit
   const handleEditSubmit = (e) => {
     e.preventDefault();
     onEditItem(itemObj.id, newDescription);
     setIsEditing(false);
   };
 
+  // Edit Click
   const handleEditClick = () => {
     setIsEditing(true);
   };

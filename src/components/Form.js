@@ -4,14 +4,17 @@ export default function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  // Change Quantity
   const handleChangeQuantity = (e) => {
     setQuantity(Number(e.target.value));
   };
 
+  // Change Description
   const handleChange = (e) => {
     setDescription(e.target.value);
   };
 
+  // Submit Form
   const handleSubmit = (e) => {
     e.preventDefault();
 
