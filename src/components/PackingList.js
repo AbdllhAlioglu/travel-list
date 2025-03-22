@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Item from "./Item";
 
 export default function PackingList({
@@ -8,11 +8,25 @@ export default function PackingList({
   onResetButton,
   onEditItem,
 }) {
+  const [sortBy, setSortBy] = useState("input");
+
+  let sortedItems;
+
+  if (sortBy === "input") sortedItems = items;
+  if (sortBy === "description")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => a.description.localeCompare(b.description));
+  if (sortBy === "packed")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => Number(a.packed) - Number(b.packed));
+
   return (
     <>
       <div className="list">
         <ul>
-          {items.map((item) => (
+          {sortedItems.map((item) => (
             <Item
               key={item.id}
               itemObj={item}
@@ -22,7 +36,14 @@ export default function PackingList({
             />
           ))}
         </ul>
-        <button onClick={onResetButton}>Reset</button>
+        <div className="actions">
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="input">Eklenme sırasına göre</option>
+            <option value="description">İsme göre</option>
+            <option value="packed">Hazırlanma durumuna göre</option>
+          </select>
+          <button onClick={onResetButton}>Tümünü Temizle</button>
+        </div>
       </div>
     </>
   );

@@ -1,9 +1,9 @@
 export default function Stats({ items }) {
   if (!items.length)
     return (
-      <p className="footer" style={{ marginLeft: "3rem" }}>
-        <em>Start adding some items to your packing list</em>
-      </p>
+      <footer>
+        <em>Hazırlık listenize eşya eklemeye başlayın ✨</em>
+      </footer>
     );
 
   const totalItems = items.length;
@@ -13,11 +13,10 @@ export default function Stats({ items }) {
 
   return (
     <footer>
-      <em style={{ marginLeft: "3rem" }}>
+      <em>
         {packedPercentage === 100
-          ? `You got everything. Ready to go ✈️ `
-          : `You have ${totalItems} items on your list and you already packed
-        ${packedItems} (${packedPercentage}%)`}
+          ? `Tüm hazırlıklarınız tamamlandı! Yolculuk için hazırsınız! ✈️`
+          : `Listenizde ${totalItems} eşya var ve ${packedItems} tanesini hazırladınız (${packedPercentage}%)`}
       </em>
     </footer>
   );

@@ -15,7 +15,7 @@ export default function Form({ onAddItems }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!description) return alert("Unvalid Description");
+    if (!description) return alert("Lütfen bir eşya ismi girin");
 
     const newItem = {
       description,
@@ -33,7 +33,7 @@ export default function Form({ onAddItems }) {
   return (
     <>
       <form className="add-form" onSubmit={handleSubmit}>
-        <h3>What do you need for 😍 your trip?</h3>
+        <h3>Seyahatiniz için neye ihtiyacınız var?</h3>
         <select value={quantity} onChange={handleChangeQuantity}>
           {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
             <option key={num} value={num}>
@@ -43,11 +43,11 @@ export default function Form({ onAddItems }) {
         </select>
         <input
           type="text"
-          placeholder="Input..."
+          placeholder="Eşya ismi..."
           value={description}
           onChange={handleChange}
         />
-        <button>Add</button>
+        <button>Ekle</button>
       </form>
     </>
   );

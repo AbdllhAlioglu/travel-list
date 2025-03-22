@@ -44,17 +44,26 @@ export default function Item({
             type="text"
             value={newDescription}
             onChange={handleEditChange}
-            style={{ border: "2px  " }}
-            s
+            style={{
+              border: "1px solid #ddd",
+              borderRadius: "6px",
+              padding: "0.8rem",
+            }}
           />
         </form>
       ) : (
-        <span style={itemObj.packed ? { textDecoration: "line-through" } : {}}>
+        <span
+          style={
+            itemObj.packed
+              ? { textDecoration: "line-through", opacity: 0.7 }
+              : {}
+          }
+        >
           {itemObj.quantity} {itemObj.description}
         </span>
       )}
-      <button onClick={handleEditClick}>💬</button>
-      <button onClick={handleRemove}>❌</button>
+      <button onClick={handleEditClick}>📝</button>
+      <button onClick={handleRemove}>🗑️</button>
     </li>
   );
 }
